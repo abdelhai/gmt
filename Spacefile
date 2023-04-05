@@ -1,0 +1,13 @@
+# Spacefile Docs: https://go.deta.dev/docs/spacefile/v0
+v: 0
+micros:
+  - name: api
+    src: ./
+    engine: python3.9
+    dev: uvicorn main:app --host 0.0.0.0 --port $PORT
+  - name: frontend
+    src: ./
+    primary: true
+    engine: static
+    serve: .
+    dev: python3 -m http.server $PORT
